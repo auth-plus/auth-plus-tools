@@ -1,0 +1,27 @@
+{
+  "name": "@auth-plus/tools",
+  "scripts": {
+    "build": "lerna run build",
+    "dev": "lerna run dev",
+    "publish": "lerna run build && lerna publish",
+    "lint": "eslint './packages/**/src/**/*.ts'",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "lerna run test"
+  },
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^14.17.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-sonarjs": "^0.10.0",
+    "jest": "^27.0.6",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.4",
+    "typescript": "^4.3.5"
+  }
+}
