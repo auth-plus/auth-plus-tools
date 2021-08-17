@@ -20,9 +20,9 @@ jobs:
         with:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@auth-plus'
-      - name: Install packages
+      - name: Install dev packages
         run: npm ci
-      - name: Install packages
+      - name: Install packages dependencies
         run: npm run bootstrap
       - name: Build
         run: npm run build
