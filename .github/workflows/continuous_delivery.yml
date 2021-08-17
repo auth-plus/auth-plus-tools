@@ -20,7 +20,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@auth-plus'
       - name: Read .npmrc
-        run: cat $HOME/.npmrc
+        run: cat ./.npmrc
       - name: Install dev packages
         run: npm ci
       - name: Install packages dependencies
