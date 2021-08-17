@@ -1,0 +1,35 @@
+name: Continuous Integration
+
+on: pull_request
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Use right version of node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.0'
+      - name: Install packages
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
+  Audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Use right version of node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.0'
+      - name: Install packages
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Audit
+        run: npm run build -- --noEmit
