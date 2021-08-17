@@ -4,7 +4,8 @@
     "./packages/*"
   ],
   "scripts": {
-    "publish": "lerna run build && lerna publish",
+    "bootstrap": "lerna exec npm ci",
+    "publish": "lerna publish",
     "build": "lerna run build",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",

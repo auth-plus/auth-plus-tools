@@ -22,6 +22,8 @@ jobs:
           scope: '@auth-plus'
       - name: Install packages
         run: npm ci
+      - name: Install packages
+        run: npm run bootstrap
       - name: Build
         run: npm run build
       - name: Publish package
