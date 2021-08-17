@@ -28,6 +28,10 @@ jobs:
         run: npm run bootstrap
       - name: Build
         run: npm run build
+      - name: Configure CI Git User
+        run: |
+          git config --global user.email octobot@github.com
+          git config --global user.name GitHub Actions
       - name: Publish package
         run: npm run publish -- --yes
         env:
