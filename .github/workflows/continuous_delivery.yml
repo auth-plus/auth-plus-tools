@@ -2,7 +2,7 @@ name: Continuous Delivery
 
 on:
   push:
-    branch: [master]
+    branch: [main]
 
 jobs:
   publish:
