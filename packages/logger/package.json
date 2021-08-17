@@ -4,6 +4,9 @@
   "description": "observability logger",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "npm run lint -- --fix",
     "test": "npm test"
   },
   "author": "@AndrewHanasiro",
