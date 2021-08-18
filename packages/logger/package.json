@@ -7,7 +7,7 @@
     "build": "tsc",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "npm run lint -- --fix",
-    "test": "npm test"
+    "test": "env NODE_ENV=test nyc --reporter=lcov --reporter=cobertura mocha"
   },
   "author": "AndrewHanasiro <andrewkhanasiro@gmail.com>",
   "license": "ISC",
@@ -27,5 +27,8 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "gitHead": "d012169c395a819924c3e87de5456f099c1a3871"
+  "gitHead": "d012169c395a819924c3e87de5456f099c1a3871",
+  "devDependencies": {
+    "firebase-functions-test": "^0.3.2"
+  }
 }

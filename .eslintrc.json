@@ -10,7 +10,6 @@
   ],
   "rules": {
     "curly": "error",
-    "array-bracket-newline": ["error", { "multiline": true }],
-    "no-console": ["error", { "allow": ["warn", "error"] }]
+    "array-bracket-newline": ["error", { "multiline": true }]
   }
 }
