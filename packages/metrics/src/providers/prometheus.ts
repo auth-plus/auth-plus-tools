@@ -7,8 +7,8 @@ export class Prometheus implements Provider {
   private hashMap: Record<string, any>
 
   constructor(config: client.DefaultMetricsCollectorConfiguration) {
-    client.collectDefaultMetrics(config)
     this.registry = new client.Registry()
+    client.collectDefaultMetrics({ ...config, register: this.registry })
     this.hashMap = {}
   }
 
@@ -17,40 +17,44 @@ export class Prometheus implements Provider {
   }
 
   createCounter(name: string, help: string): void {
-    const instance = this.getInstance<client.Counter<string>>(`counter-${name}`)
-    if (!instance) {
+    try {
+      this.getInstance<client.Counter<string>>(`counter-${name}`)
+    } catch (error) {
       const counter = new client.Counter({
         name,
         help,
+        registers: [this.registry],
       })
-      this.hashMap[`counter-${name}`] = counter
+      this.hashMap = { ...this.hashMap, [`counter-${name}`]: counter }
     }
   }
 
   incrementCounter(name: string, value: number): void {
     const instance = this.getInstance<client.Counter<string>>(`counter-${name}`)
-    instance?.inc(value)
+    instance.inc(value)
   }
 
   createGauge(name: string, help: string): void {
-    const instance = this.getInstance<client.Gauge<string>>(`gauge-${name}`)
-    if (!instance) {
+    try {
+      this.getInstance<client.Gauge<string>>(`gauge-${name}`)
+    } catch (error) {
       const gauge = new client.Gauge({
         name,
         help,
+        registers: [this.registry],
       })
-      this.hashMap[`gauge-${name}`] = gauge
+      this.hashMap = { ...this.hashMap, [`gauge-${name}`]: gauge }
     }
   }
 
   incrementGauge(name: string, value: number): void {
     const instance = this.getInstance<client.Gauge<string>>(`gauge-${name}`)
-    instance?.inc(value)
+    instance.inc(value)
   }
 
   decrementGauge(name: string, value: number): void {
     const instance = this.getInstance<client.Gauge<string>>(`gauge-${name}`)
-    instance?.dec(value)
+    instance.dec(value)
   }
 
   createHistogram(
@@ -58,16 +62,16 @@ export class Prometheus implements Provider {
     help: string,
     buckets = [0.1, 5, 15, 50, 100, 500]
   ): void {
-    const instance = this.getInstance<client.Histogram<string>>(
-      `histogram-${name}`
-    )
-    if (!instance) {
+    try {
+      this.getInstance<client.Histogram<string>>(`histogram-${name}`)
+    } catch (error) {
       const histogram = new client.Histogram({
         name,
         help,
         buckets,
+        registers: [this.registry],
       })
-      this.hashMap[`histogram-${name}`] = histogram
+      this.hashMap = { ...this.hashMap, [`histogram-${name}`]: histogram }
     }
   }
 
@@ -75,10 +79,14 @@ export class Prometheus implements Provider {
     const instance = this.getInstance<client.Histogram<string>>(
       `histogram-${name}`
     )
-    instance?.observe(value)
+    instance.observe(value)
   }
 
-  private getInstance<T>(name: string): T | null {
-    return this.hashMap[name] ?? null
+  private getInstance<T>(name: string): T {
+    const instance = this.hashMap[name] as T | undefined
+    if (!instance) {
+      throw new Error(`metric ${name} does not exist`)
+    }
+    return instance
   }
 }

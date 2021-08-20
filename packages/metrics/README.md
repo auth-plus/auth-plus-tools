@@ -7,10 +7,18 @@
 ```js
 import { MetricsSingleton } from '@auth-plus/metrics'
 
-MetricsSingleton.getInstance({ prefix: 'your-system-name' })
+const metrics = MetricsSingleton.getInstance({
+    type: 'prometheus',
+    config: {
+        prefix: 'your-system-name',
+    },
+})
 
-MetricsSingleton.createCounter('couter-test', 'help-description')
-MetricsSingleton.incrementCounter('couter-test', 2)
+metrics.createCounter('couter-test', 'help-description') 
+// MetricsSingleton.getInstance().createCounter('couter-test', 'help-description')
 
-console.log(await MetricsSingleton.getMetrics())
+metrics.incrementCounter('couter-test', 2)
+// MetricsSingleton.getInstance().incrementCounter('couter-test', 2)
+
+console.log(await metrics.getMetrics())
 ```

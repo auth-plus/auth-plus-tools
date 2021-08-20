@@ -18,7 +18,7 @@ export class MetricsSingleton {
     }
   }
 
-  public static getInstance(config: any): MetricsSingleton {
+  public static getInstance(config: Profile): MetricsSingleton {
     if (!MetricsSingleton.instance) {
       MetricsSingleton.instance = new MetricsSingleton(config)
     }
