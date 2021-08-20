@@ -5,8 +5,6 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint 'src/**/*.ts'",
-    "lint:fix": "npm run lint -- --fix",
     "test": "env NODE_ENV=test nyc --reporter=lcov --reporter=cobertura mocha"
   },
   "author": "AndrewHanasiro <andrewkhanasiro@gmail.com>",
@@ -18,7 +16,9 @@
     "winston-transport": "^4.4.0"
   },
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "src": "src",
+    "test": "test"
   },
   "files": [
     "lib"

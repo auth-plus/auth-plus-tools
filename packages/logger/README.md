@@ -7,7 +7,7 @@
 ```js
 import { LoggerSingleton as logger } from '@auth-plus/logger'
 
-logger.getInstance().addConsole()
+logger.getInstance().addConsole().addSentry
 logger.info('info-string')
 logger.log('message','error') // = logger.error('message')
 
@@ -23,7 +23,7 @@ class Test {
     }
 
     @LogMethod(console)
-    method2(input: string) {
+    method2(input: string, obj: Record<string, any>) {
         return input
     }
 }
@@ -32,13 +32,13 @@ t.method1() // method1 ([])
 t.method2('m2', { a: 1, b: '2', c: [3] }) // method2 (["m2",{"a":1,"b":"2","c":[3]}])
 
 class Test2 {
-    @LogMethod() //or nothing
+    @LogMethod() //or nothing, it will use LoggerSingleton as fallback with info level
     method1() {
         return 'm1'
     }
 
     @LogMethod()
-    method2(input: string) {
+    method2(input: string, obj: Record<string, any>) {
         return input
     }
 }
@@ -46,5 +46,5 @@ class Test2 {
 
 const t = new Test2()
 t.method1() //info: method1 ([]) {"timestamp":"2021-08-20T16:01:49.886Z"}
-t.method2('m2', { a: 1, b: '2', c: [3] }) // info: method2 (["m2"]) {"timestamp":"2021-08-20T16:01:49.887Z"}
+t.method2('m2', { a: 1, b: '2', c: [3] }) // info: method2 (["m2",{"a":1,"b":"2","c":[3]}]) {"timestamp":"2021-08-20T16:01:49.887Z"}
 ```

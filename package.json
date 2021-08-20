@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "bootstrap": "lerna exec npm ci",
-    "publish": "lerna publish",
+    "publish": "lerna run build && lerna publish",
     "build": "lerna run build",
     "lint": "eslint './packages/**/src/**/*.{ts,tsx}'",
     "lint:fix": "npm run lint -- --fix",
