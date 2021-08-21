@@ -1,6 +1,6 @@
 {
   "name": "@auth-plus/metrics",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Metrics Tool",
   "keywords": [
     "observability",
