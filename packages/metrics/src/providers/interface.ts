@@ -1,4 +1,5 @@
 export interface Provider {
+  reset: () => void
   getMetrics: () => Promise<string>
   createCounter: (name: string, help: string) => void
   incrementCounter: (name: string, value: number) => void

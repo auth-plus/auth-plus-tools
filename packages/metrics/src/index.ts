@@ -25,6 +25,9 @@ export class MetricsSingleton {
     return MetricsSingleton.instance
   }
 
+  reset(): void {
+    MetricsSingleton.provider.reset()
+  }
   getMetrics(): Promise<string> {
     return MetricsSingleton.provider.getMetrics()
   }

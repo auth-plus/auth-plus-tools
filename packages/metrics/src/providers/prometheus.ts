@@ -12,6 +12,10 @@ export class Prometheus implements Provider {
     this.hashMap = {}
   }
 
+  reset(): void {
+    this.registry.clear()
+    this.hashMap = {}
+  }
   getMetrics(): Promise<string> {
     return this.registry.metrics()
   }
