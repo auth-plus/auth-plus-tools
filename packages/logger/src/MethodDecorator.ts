@@ -21,13 +21,9 @@ export function LogMethod(logger?: StandartLogger) {
           logger.log(msg)
         }
       } else {
-        console.warn('no logger')
-        console.warn(LoggerSingleton.getInstance().getTranportLength())
         if (LoggerSingleton.getInstance().getTranportLength() === 0) {
           LoggerSingleton.getInstance().addConsole()
         }
-        console.warn(LoggerSingleton.getInstance().getTranportLength())
-
         LoggerSingleton.getInstance().info(msg)
       }
       return originalMethod.apply(this, args)
