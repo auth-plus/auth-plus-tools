@@ -1,6 +1,6 @@
 {
   "name": "@auth-plus/env-var",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tool for environment variable management",
   "keywords": [
     "auth-plus",
