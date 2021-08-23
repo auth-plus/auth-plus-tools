@@ -6,6 +6,6 @@ export interface Provider {
   createGauge: (name: string, help: string) => void
   incrementGauge: (name: string, value: number) => void
   decrementGauge: (name: string, value: number) => void
-  createHistogram: (name: string, help: string) => void
+  createHistogram: (name: string, help: string, buckets: number[]) => void
   histogramObserve: (name: string, value: number) => void
 }

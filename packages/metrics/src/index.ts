@@ -46,8 +46,8 @@ export class MetricsSingleton {
   decrementGauge(name: string, value: number): void {
     return MetricsSingleton.provider.decrementGauge(name, value)
   }
-  createHistogram(name: string, help: string): void {
-    return MetricsSingleton.provider.createHistogram(name, help)
+  createHistogram(name: string, help: string, buckets: number[]): void {
+    return MetricsSingleton.provider.createHistogram(name, help, buckets)
   }
   histogramObserve(name: string, value: number): void {
     return MetricsSingleton.provider.histogramObserve(name, value)
