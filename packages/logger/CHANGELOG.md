@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/auth-plus/auth-plus-tools/compare/@auth-plus/logger@1.2.0...@auth-plus/logger@1.2.1) (2021-08-23)
+
+**Note:** Version bump only for package @auth-plus/logger
+
+
+
+
+
 # [1.2.0](https://github.com/auth-plus/auth-plus-tools/compare/@auth-plus/logger@1.1.0...@auth-plus/logger@1.2.0) (2021-08-21)
 
 
