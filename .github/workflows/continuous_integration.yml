@@ -38,4 +38,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: Audit
-        run: npm run build -- --noEmit
+        run: npm run build --noEmit
