@@ -35,7 +35,7 @@ jobs:
           git config --global user.email octobot@github.com
           git config --global user.name GitHub Actions
       - name: Publish package
-        run: npm run publish -- --yes
+        run: npm run publish --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
